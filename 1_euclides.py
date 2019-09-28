@@ -2,17 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import timeit
 import random
+from utils import mcd_euclides
 
-
-def mcd_euclides(dividend , divisor):
-#Calcula el màxim comú divisor de a i b usant l'algorisme d'Euclides
-    residu = dividend % divisor
-    while residu != 0:
-        dividend = divisor
-        divisor = residu
-        residu = dividend % divisor
-
-    return divisor
 
 
 def mcd_input():

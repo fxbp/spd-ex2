@@ -3,29 +3,8 @@ import matplotlib.pyplot as plt
 import timeit
 import random
 import math
+from utils import bezoud
 
-def bezoud(dividend , divisor):
-#Calcula el màxim comú divisor de a i b usant l'algorisme d'Euclides
-    residu = dividend % divisor
-    q = dividend // divisor
-    i = 2
-    r =[1,0]
-    s= [0,1]
-    while residu != 0:
-        r.append(q*r[i-1]+r[i-2])
-        s.append(q*s[i-1]+s[i-2])
-        dividend = divisor
-        divisor = residu
-        residu = dividend % divisor
-        q = dividend // divisor
-        i+=1
-    sRes = s[i-1]
-    rRes = r[i-1]
-    if (i-1)%2==0:
-        sRes *=-1
-    else:
-        rRes *= -1
-    return divisor , rRes, sRes
 
 
 def bezoud_input():
