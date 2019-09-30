@@ -22,7 +22,7 @@ def primer_rep():
     llargada = 4
     mides = list()
     temps = list()
-    while i < 8:
+    while i < 7:
         test = random.getrandbits(llargada)
         print(test)
         temps_inicial = timeit.default_timer()
@@ -36,7 +36,13 @@ def primer_rep():
 
 
     plt.plot(mides,temps, '-gD')
+    plt.xlabel("Nombre de dígits")
+    plt.ylabel("Segons")
     plt.show()
 
-
+start = timeit.default_timer()
+test = 1000000000100011
+print("Provant si {} es primer".format(test))
+print(es_primer(test))
+print(timeit.default_timer()-start)
 primer_rep()

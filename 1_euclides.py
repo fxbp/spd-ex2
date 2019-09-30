@@ -16,7 +16,6 @@ def mcd_input():
     print("Dividend: ",dividend)
     print("Divisor: ", divisor)
     print("MCD: ", resultat)
-    print(len(dividend))
     print("Temps invertit: %.10f segons" % (temps_invertit))
 
 
@@ -42,6 +41,8 @@ def mcd_rep():
 
 
     plt.plot(mides, temps, '-gD')
+    plt.xlabel("Nombre de dígits")
+    plt.ylabel("Segons")
     plt.show()
 
 
