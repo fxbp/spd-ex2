@@ -198,12 +198,121 @@ Veiem el gràfic resultant:
 
 ## E: Descomposicio en factors primers
 
+[Veure factors_primers a utils.py](https://github.com/fxbp/spd-ex2/blob/master/utils.py)
+[Veure fitxer 5_factoritzar.py](https://github.com/fxbp/spd-ex2/blob/master/5_factoritzar.py)
+
+
+La descomposició de nombres en factors primers te la mateixa complexitat que la del test de primalitat normal. L'algoritme és el mateix pero en comptes de parar quan trobem un divisor, es continua fins arrel(n) ja que necessita trobar tots els divisors del nombre. per tant podrem veure que el grafic serà similar. En aquest cas no és necessari mirar si el nombre es primer abans ja que qualsevol nombre fara tots els passos.
+
+Alguns exemples:
+
+```
+python 5_factoritzar.py
+Factorització en nombres primers de:  561
+[3, 11, 17]
+```
+
+```
+python 5_factoritzar.py
+Factorització en nombres primers de:  545610561620048
+[2, 2, 2, 2, 3019, 22153, 509879]
+```
+
+### Càlcul de la complexitat digits/temps
+
+Com ja he comentat la complexitat es la mateixa que la del test de primalitat en el pitjor cas per tant podem concluir que també serà una complexitat exponencial.
+
+![Grafic factorització](imatges/Figure_4.png)
+
+Com es pot veure el gràfic es molt similar al del test de primalitat.
 
 ## F: Càlcul de l'invers modular a Z/n
 
+[Veure fitxer 6_Invers_modular.py](https://github.com/fxbp/spd-ex2/blob/master/6_Invers_modular.py)
+
+Trobar l'invers modular serveix per poder dividir en mod n. Com que es treballa amb nombres enters no podem fer la divisió com la coneixem a Z/n. El resultat de l'invers modular també serà un nombre enter de 0 a n-1 (mod n).
+
+Una forma eficient de trobar l'invers modular és utilitzar l'algoritme d e Bezout. Els nombres r i s, quan el mcd del nombre i la n, del mod n, és 1, s és l'invers modular del nombre en questió.
+
+Recordem que els nombres r i s multiplicaven al dividend i al divisor. En aquest cas un dels 2 és el propi N de Z/n. Per tant r*n ens donara sempre que és un divisor de n, es congruent a 0 en mod n. Per tant el resultat es s (mod n). Si el nombre s es negatiu, al aplicar el mod n ja quedarà com a una de les possibles classes de n a Z/n.
+
+Alguns exemples:
+
+```
+python 6_Invers_modular.py
+entreu un enter al que voleu buscar invers (mod n) 45879
+entreu el modul: 4587931
+Invers modular de  45879 a (mod 4587931)
+45879^(-1) (mod 4587931) = 4439930
+```
+
+```
+python 6_Invers_modular.py
+entreu un enter al que voleu buscar invers (mod n) 128
+entreu el modul: 405
+Invers modular de  128 a (mod 405)
+128^(-1) (mod 405) = 212
+```
+
+### Complexitat en dígits/temps.
+
+Com s'ha comentat, s'utilitza l'algoritme de Bezout i aquest utilitza el mateix esquema que l'algorimte d'Euclides per el MCD.
+Només és pot calcular l'invers modular d'aquells nombres que son coprimers amb n. D'aqui es pot extreure que per als nombres primers, tots els enters menors que n, menys el 0, seran inversibles en mod n.
+
+Per tant la complexitat serà també polinomica.
+
+![Grafic Invers modular](imatges/Figure_5.png)
+
 ## G: Exponenciacio modular a Z/n
 
+[Veure potencia_modular_eficient a utils.py](https://github.com/fxbp/spd-ex2/blob/master/utils.py)
+[Veure fitxer 7_exponent_modular.py](https://github.com/fxbp/spd-ex2/blob/master/7_exponent_modular.py)
+
+En aritmética modular es pot aprofitar una de les propietats de la multiplicació: a*b (mod n) es congruent amb (a (mod n)) * (b (mod n)) (mod n).
+
+Exportat a la exponeciació es tradueix en que és pot trobar un algoritme de complexitat polinomica per trobar el resluttat. Per tant reduir el cost.
+
+Exemple:
+
+```
+python 7_exponent_modular.py
+entreu la n de Z/n: 5
+Entreu la base: 48
+Entreu l'exponent : 57
+Exponenciacio modular 48 de 57 = 3 (mod 5)
+```
+
+### Complexitat en dígits/temps.
+
+Veiem un gràfic on es va modificant la base i l'exponent per intentar veure el cost polinomic de l'algoritme
+
+![Grafic exponeciacio modular](imatges/Figure_6.png)
+
 ## H: Càlcul del logaritme discret a Z/n
+
+[Veure fitxer 8_logaritme_discret.py](https://github.com/fxbp/spd-ex2/blob/master/8_logaritme_discret.py)
+
+Pel contrari que la exponenciació modular, trobar el valor del logaritme discret a Z/n té un cost exponencial. Doncs s'ha danar provant per a cada enter si és o no logarimte discret del valor.
+
+Per fer-ho dons s'utilitza la potencia_modular_eficient, fent el canvi de paràmetres pertinents. Per a cada enter, es comprova que l'argument del logaritme sigui el resultat de l'exponent modular passant el nombre provat com a exponent de l'operacio.
+
+Alguns exemples simples:
+
+```
+python 8_logaritme_discret.py
+entreu la n de Z/n: 5
+Entreu la base del logaritme discret: 2
+Entreu l'argument del logaritme discret: 3
+Logaritme discret en base 2 de 3 = 3 (mod 5)
+```
+
+```
+python 8_logaritme_discret.py
+entreu la n de Z/n: 23
+Entreu la base del logaritme discret: 3
+Entreu l'argument del logaritme discret: 12
+Logaritme discret en base 3 de 12 = 4 (mod 23)
+```
 
 ```
 pandoc README.md -o README.pdf --from markdown --template eisvogel --listings

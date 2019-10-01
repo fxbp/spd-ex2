@@ -1,5 +1,15 @@
 import math
 
+def es_primer(nombre):
+# <nombre> >= 0, diu si <nombre> és es primer
+    if nombre <2:
+        return False
+    arrel_de_nombre = math.sqrt(nombre)
+    for k in range(2, int(arrel_de_nombre)+1):
+        if nombre % k == 0:
+            return False
+    return True
+
 
 def mcd_euclides(dividend , divisor):
 #Calcula el màxim comú divisor de a i b usant l'algorisme d'Euclides

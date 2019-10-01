@@ -3,16 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import timeit
 import random
+from utils import es_primer
 
-def es_primer(nombre):
-# <nombre> >= 0, diu si <nombre> és es primer
-    if nombre <2:
-        return False
-    arrel_de_nombre = math.sqrt(nombre)
-    for k in range(2, int(arrel_de_nombre)+1):
-        if nombre % k == 0:
-            return False
-    return True
 
 
 
